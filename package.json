@@ -1,0 +1,9 @@
+{
+  "name": "devstudio-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Backend (Netlify Functions + Blobs) untuk site devstudio — leads, content CMS, analytics.",
+  "dependencies": {
+    "@netlify/blobs": "^10.0.0"
+  }
+}

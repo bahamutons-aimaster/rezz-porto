@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin — devstudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin-body">
+
+  <!-- ══ LOGIN ══════════════════════════════════════════ -->
+  <div class="ad-login" id="adLogin">
+    <form class="ad-login-card" id="adLoginForm">
+      <div class="ad-login-logo">
+        <span class="logo-mark">D</span>
+        <span>dev<strong>studio</strong></span>
+      </div>
+      <h1 class="ad-login-title">Admin Panel</h1>
+      <p class="ad-login-sub">Masuk untuk kelola leads, konten, dan analytics.</p>
+      <input type="password" id="adPassword" class="ad-input" placeholder="Password admin" autocomplete="current-password" autofocus required />
+      <button type="submit" class="ad-btn ad-btn-red" id="adLoginBtn">Masuk</button>
+      <p class="ad-login-err" id="adLoginErr"></p>
+    </form>
+  </div>
+
+  <!-- ══ DASHBOARD ══════════════════════════════════════ -->
+  <div class="ad-shell" id="adShell" hidden>
+    <aside class="ad-sidebar">
+      <div class="ad-side-head">
+        <span class="ad-side-title">dev<strong>studio</strong></span>
+        <span class="ad-side-sub">Admin Panel</span>
+      </div>
+      <nav class="ad-nav">
+        <button class="ad-nav-link active" data-tab="leads">📨 Pesan Masuk</button>
+        <button class="ad-nav-link" data-tab="analytics">📊 Analytics</button>
+        <button class="ad-nav-link" data-tab="content">📝 Konten</button>
+        <button class="ad-nav-link" data-tab="portfolio">💼 Portofolio</button>
+        <button class="ad-nav-link" data-tab="reels">🎬 Video Reels</button>
+        <button class="ad-nav-link" data-tab="articles">📰 Artikel</button>
+        <button class="ad-nav-link" data-tab="gallery">🖼️ Galeri</button>
+      </nav>
+      <div class="ad-side-foot">
+        <a href="/" target="_blank" rel="noopener" class="ad-view-site">↗ Lihat Situs</a>
+        <button class="ad-logout" id="adLogoutBtn">Keluar</button>
+      </div>
+    </aside>
+
+    <main class="ad-main">
+      <div class="ad-topbar">
+        <h2 class="ad-page-title" id="adPageTitle">Pesan Masuk</h2>
+        <div id="adSaveArea"></div>
+      </div>
+      <div id="adContent" class="ad-content"></div>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
