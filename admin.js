@@ -31,14 +31,18 @@ async function checkAuth() {
 }
 
 function showLogin() {
-  qs('#adLogin').hidden = false;
-  qs('#adShell').hidden = true;
+  
+  qs('#adLogin').style.display = 'flex';
+  qs('#adShell').style.display = 'none';
+  
 }
 
 function showDashboard() {
-  qs('#adLogin').hidden = true;
-  qs('#adShell').hidden = false;
+  
+  qs('#adLogin').style.display = 'none';
+  qs('#adShell').style.display = 'grid';
   switchTab(currentTab);
+ 
 }
 
 async function onLogin(e) {
