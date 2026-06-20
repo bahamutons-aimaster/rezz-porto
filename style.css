@@ -755,45 +755,10 @@ body {
   to { transform: scale(4); opacity: 0; }
 }
 
-/* ── Mobile Swap Carousel (swipe fade) ──────────── */
-@media (max-width: 768px) {
-  .carousel-outer { overflow: hidden; }
-  .carousel-track {
-    /* On mobile we stack all cards and use opacity/transform swap */
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    padding: 0 16px;
-    transform: none !important;   /* disable JS translateX */
-    transition: none;
-  }
-  .portfolio-card {
-    flex: none;
-    width: 100%;
-    aspect-ratio: 16/9;
-    display: none;            /* hidden by default */
-    border-radius: 12px;
-    transform: translateX(60px);
-    opacity: 0;
-    transition: opacity .4s cubic-bezier(.4,0,.2,1), transform .4s cubic-bezier(.4,0,.2,1);
-  }
-  .portfolio-card.mobile-active {
-    display: block;
-    transform: translateX(0);
-    opacity: 1;
-  }
-  .portfolio-card.mobile-exit-left {
-    display: block;
-    transform: translateX(-60px);
-    opacity: 0;
-  }
-  .portfolio-card.mobile-exit-right {
-    display: block;
-    transform: translateX(60px);
-    opacity: 0;
-  }
-  .carousel-btn { display: none; }
-}
+/* (Catatan: blok CSS lama untuk mobile swap carousel yang ada di sini sudah
+   dihapus — class-nya gak match sama yang dipakai JS (mob-exit-l/mob-exit-r),
+   dan udah digantikan blok yang lebih baru & benar di bagian bawah file ini,
+   deket ".carousel-track { display: flex; ... }") */
 
 /* ══════════════════════════════════════════════════
    NEW PRICING SECTION (rezkixii style)
@@ -1042,6 +1007,12 @@ body {
     opacity: 0;
     transition: opacity .35s cubic-bezier(.4,0,.2,1),
                 transform .35s cubic-bezier(.4,0,.2,1);
+    /* Penting: semua card numpuk di sel grid yang SAMA (baris 1, kolom 1),
+       jadi pas kartu lama & kartu baru sama-sama display:block barengan
+       sesaat (waktu transisi), keduanya overlap di tempat yang sama —
+       bukan masing-masing dapet baris sendiri (yang bikin kartu lama
+       kelihatan "jatuh ke bawah" sebelum hilang). */
+    grid-area: 1 / 1;
   }
 
   /* Only show active real card */
@@ -1245,7 +1216,8 @@ body {
     transition: opacity .35s cubic-bezier(.4,0,.2,1), transform .35s cubic-bezier(.4,0,.2,1);
   }
   .gallery-card.mob-active {
-    display: block !important; transform: translateX(0) !important; opacity: 1 !important;
+    display: block !important; position: absolute; inset: 0;
+    transform: translateX(0) !important; opacity: 1 !important;
   }
   .gallery-card.mob-exit-l {
     display: block !important; position: absolute; inset: 0;
